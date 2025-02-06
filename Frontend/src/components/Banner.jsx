@@ -11,7 +11,7 @@ function Banner() {
     
     <div className='max-w-screen-2xl mx-auto container md:px-20 px-4 flex flex-col md:flex-row '>
         <div className=' order-2 md:order-1 w-full md:w-1/2 mt-12 md:mt-40  '>
-            <h1 className='text-7xl font-bold content-center leading-tight'>The Most Popular Portfolio 
+            <h1 className='text-7xl font-bold content-center leading-tight'>The Most Popular  
                 <span className='bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 bg-clip-text text-transparent transition-all duration-300 hover:from-blue-700 hover:via-Pink-700 hover:to-red-700'> Protfolio Builder</span> Tool !!!</h1>
             <p className='mt-5 md:mt-10 mb-5 md:mb-10'>Create beautiful, customizable portfolios with ease using our powerful, user-friendly tool.
             Showcase your skills, projects, and achievements with interactive and professional portfolio designs.
