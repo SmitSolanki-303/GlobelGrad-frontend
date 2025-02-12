@@ -40,8 +40,10 @@ function Navbar() {
         <>
             <Link to='/'><li className='hover:text-pink-500'><a>Home</a></li></Link>
             <Link to='/register'><li className='hover:text-pink-500'><a>Register</a></li></Link>
-            <li className='hover:text-pink-500'><a>Post</a></li>
-            <li className='hover:text-pink-500'><a>Blogs</a></li>
+            <Link to='/jd'><li className='hover:text-pink-500'><a>JobMatcher</a></li></Link>
+            <Link to='/blog'><li className='hover:text-pink-500'><a>Blogs</a></li></Link>
+            <li className='hover:text-pink-500'><a></a></li>
+            
         </>
      );
   return (
