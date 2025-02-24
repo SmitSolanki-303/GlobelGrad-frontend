@@ -1,13 +1,13 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
-import PortfolioForm from '../components/PortfolioForm'
+import PortfolioBuilder from '../components/PortfolioBuilder'
 
 function Protfolio() {
   return (
     <>
       <Navbar></Navbar>
-      <PortfolioForm></PortfolioForm>
+      <PortfolioBuilder></PortfolioBuilder>
       <Footer></Footer>
     </>
   )

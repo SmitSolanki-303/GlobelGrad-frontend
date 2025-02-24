@@ -22,6 +22,7 @@ function App() {
       <Route path='/templet' element={<PortfolioWebsitePreview />}></Route>
       <Route path='/blog' element={<BlogMain />}></Route>
       <Route path='/jd' element={<MainJob />}></Route>
+      {/* <Route path='/test' element={<JobMatcher/>}></Route> */}
 
     </Routes>
     </>

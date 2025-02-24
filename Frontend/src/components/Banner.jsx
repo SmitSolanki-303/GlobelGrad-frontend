@@ -5,6 +5,7 @@ import f1 from "../assets/f1.jpg";
 import f2 from "../assets/f2.jpg";
 import f3 from "../assets/f3.jpg";
 import p1 from "../assets/home_p1.jpg";
+import { Link } from 'react-router-dom';
 function Banner() {
   return (
     <>
@@ -17,8 +18,8 @@ function Banner() {
             Showcase your skills, projects, and achievements with interactive and professional portfolio designs.
             </p>
             <div className='flex flex-row'>
-                <button className='w-1/4 p-3 md:p-4 rounded-full border m-1 bg-purple-600 hover:bg-yellow-500 text-white hover:text-black duration-300'> get start</button>
-                <button className='w-3/4 p-3 md:p-4 rounded-full border m-1 bg-cyan-500 hover:bg-pink-400 text-white hover:text-black'> get start</button>
+                <Link to="/register" className='w-1/4 p-3 md:p-4 rounded-full border m-1 bg-purple-600 hover:bg-yellow-500 text-white hover:text-black duration-300 text-center'> Get start</Link>
+                <Link to="privacy-policy" className='w-3/4 p-3 md:p-4 rounded-full border m-1 bg-cyan-500 hover:bg-pink-400 text-white hover:text-black text-center'>Privacy Policy</Link>
             </div>
         </div>
         <motion.div
