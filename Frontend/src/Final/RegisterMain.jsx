@@ -1,7 +1,7 @@
 import React from 'react'
-import Navbar from '../components/Navbar'
-import Footer from '../components/Footer'
-import Register from '../components/Register'
+import Navbar from '../components/NavbarPage/Navbar'
+import Footer from '../components/FooterPage/Footer'
+import Register from '../components/RegisterPage/Register'
 
 function RegisterPage() {
   return (

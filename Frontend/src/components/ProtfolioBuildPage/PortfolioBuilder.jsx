@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { CheckCircle, Circle, ArrowRight, ArrowLeft, Save, Eye, Book, Trophy, Code, User, Briefcase, Layout } from 'lucide-react';
-import PortfolioWebsitePreview from './PortfolioWebsitePreview';
-import SkillsForm from "./SkillsForm";
-import AchievementsForm from "./AchievementsForm";
-import EducationForm from "./EducationForm";
-import ExperienceForm from "./ExperienceForm";
+import PortfolioWebsitePreview from '../TempletPage/PortfolioWebsitePreview';
+import SkillsForm from "../SubProtfolioPages/SkillsForm";
+import AchievementsForm from "../SubProtfolioPages/AchievementsForm";
+import EducationForm from "../SubProtfolioPages/EducationForm";
+import ExperienceForm from "../SubProtfolioPages/ExperienceForm";
 
 const PortfolioBuilder = () => {
   const [step, setStep] = useState(1);

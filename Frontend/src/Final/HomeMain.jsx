@@ -1,16 +1,16 @@
 import React from 'react'
 import Navbar from '../components/NavbarPage/Navbar'
+import Banner from '../components/HomePage/Banner'
 import Footer from '../components/FooterPage/Footer'
-import JobMatcher from '../components/AIMLPages/Matcher'
 
-function MainJob() {
+function Home() {
   return (
     <>
-      <Navbar/>
-      <JobMatcher/>
-      <Footer/>
+    <Navbar/>
+    <Banner/>
+    <Footer/>
     </>
   )
 }
 
-export default MainJob
+export default Home

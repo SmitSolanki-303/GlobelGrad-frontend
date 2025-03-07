@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import {Link} from 'react-router-dom';
-import bg1 from '../assets/login_1.jpg';
-import bg2 from '../assets/login_2.jpg'
+import bg1 from '../../assets/login_1.jpg';
+import bg2 from '../../assets/login_2.jpg'
 function Login() {
   const [isSignUp, setIsSignUp] = useState(false);
 

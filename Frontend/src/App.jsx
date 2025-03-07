@@ -1,13 +1,14 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
-import Home from './Final/Home'
-import Login from './components/Login'
-import RegisterPage from './Final/RegisterPage'
-import PrivacyPolicy from './components/PrivacyPolicy';
-import Protfolio from './Final/Protfolio'
-import PortfolioWebsitePreview from './components/PortfolioWebsitePreview'
+import Home from './Final/HomeMain'
+import Login from './components/SignUpPage/Login'
+import RegisterPage from './Final/RegisterMain'
+import PrivacyPolicy from './components/TermAndConditionPage/PrivacyPolicy';
+import Protfolio from './Final/ProtfolioMain'
+import PortfolioWebsitePreview from './components/TempletPage/PortfolioWebsitePreview'
 import BlogMain from './Final/BlogMain'
 import MainJob from './Final/MainJob'
+
 
 
 function App() {
@@ -22,7 +23,7 @@ function App() {
       <Route path='/templet' element={<PortfolioWebsitePreview />}></Route>
       <Route path='/blog' element={<BlogMain />}></Route>
       <Route path='/jd' element={<MainJob />}></Route>
-      {/* <Route path='/test' element={<JobMatcher/>}></Route> */}
+      {/* <Route path='/test' element={<Dashboard/>}></Route> */}
 
     </Routes>
     </>

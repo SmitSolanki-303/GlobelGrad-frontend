@@ -1,10 +1,10 @@
 import React from 'react'
 import { motion } from "framer-motion";
-import bannerImage from "../assets/414.jpg";
-import f1 from "../assets/f1.jpg";
-import f2 from "../assets/f2.jpg";
-import f3 from "../assets/f3.jpg";
-import p1 from "../assets/home_p1.jpg";
+import bannerImage from "../../assets/414.jpg";
+import f1 from "../../assets/f1.jpg";
+import f2 from "../../assets/f2.jpg";
+import f3 from "../../assets/f3.jpg";
+import p1 from "../../assets/home_p1.jpg";
 import { Link } from 'react-router-dom';
 function Banner() {
   return (
