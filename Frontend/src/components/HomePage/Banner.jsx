@@ -10,7 +10,7 @@ function Banner() {
   return (
     <>
     
-    <div className='max-w-screen-2xl mx-auto container md:px-20 px-4 flex flex-col md:flex-row '>
+    <div className='max-w-screen-2xl mx-auto container md:px-20 px-4 flex flex-col md:flex-row dark:bg-black dark:text-white'>
         <div className=' order-2 md:order-1 w-full md:w-1/2 mt-12 md:mt-40  '>
             <h1 className='text-7xl font-bold content-center leading-tight'>The Most Popular  
                 <span className='bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 bg-clip-text text-transparent transition-all duration-300 hover:from-blue-700 hover:via-Pink-700 hover:to-red-700'> Protfolio Builder</span> Tool !!!</h1>
@@ -23,7 +23,7 @@ function Banner() {
             </div>
         </div>
         <motion.div
-          className="z-10 order-1 md:order-2 w-full md:w-1/2 flex items-center justify-center relative overflow-hidden  mt-12 md:mt-40"
+          className="z-10 order-1 md:order-2 w-full md:w-1/2 flex items-center justify-center relative overflow-hidden  mt-12 md:mt-40 "
           whileHover={{ scale: 1.02, rotate: -2 }} // 3D Zoom & slight tilt on hover
         >
           {/* Image with Animation */}
@@ -38,7 +38,7 @@ function Banner() {
           />
         </motion.div>
     </div>
-    <div className='max-w-screen-2xl mx-auto md:px-20 px-4 flex flex-col'>
+    <div className='max-w-screen-2xl mx-auto md:px-20 px-4 flex flex-col dark:bg-black dark:text-white'>
       {/* First Row with Icons/Text */}
       <div className='flex flex-col md:flex-row items-center justify-between text-center md:text-left gap-10 md:gap-16 my-10'>
         <div className='flex flex-row items-center'>
@@ -58,8 +58,8 @@ function Banner() {
       </div>
     </div>
 
-    <div className='max-w-screen-2xl mx-auto md:px-60 px-4 text-justify  '>
-        <p className="text-gray-700 leading-relaxed mb-10 ">
+    <div className='max-w-screen-2xl mx-auto md:px-60 px-4 text-justify  dark:bg-black dark:text-white'>
+        <p className="text-gray-700 leading-relaxed mb-10 dark:bg-black dark:text-white">
           At <strong>GlobelGrad</strong>, we empower students and professionals to build stunning, customizable portfolios with ease. 
           Our platform simplifies the process of showcasing your skills, projects, and achievements in a visually compelling and interactive way. 
           Whether you're a designer, developer, writer, or freelancer, <strong>GlobelGrad</strong> helps you create a strong digital presence that stands out.
@@ -67,10 +67,10 @@ function Banner() {
           With an intuitive interface and powerful customization options, we make portfolio building effortless—so you can focus on what matters most: 
           your career growth and personal brand.
         </p>
-        <div className='flex flex-col item-center'>
+        <div className='flex flex-col item-center dark:bg-black dark:text-white'>
           <img src={p1} alt="Homepage fisrt image -p1" className='w-full h-full border rounded-md' />
         </div>
-        <p className="text-gray-700 leading-relaxed py-10 ">
+        <p className="text-gray-700 leading-relaxed py-10 dark:bg-black dark:text-white ">
         Powered by our smart drag-and-drop editing tools and features, you can create a creative portfolio website in minutes. GlobelGrad’s website builder lets you get down to business right away. Start inspired with professionally designed and fully editable portfolio website templates, create a new one on your own, or create a website mockup to visualize your design. Showcase your past projects, work experiences, and best skills through beautiful graphs, timelines, and images. Get any free stock video footage or stock photos into your chosen portfolio layout with a simple drag and drop. Import your own fonts or use our free font library and present text into eye-catching headers and font combinations. Then, publish on the web easily with a free GlobelGrad domain or purchase a custom one for you.
         </p>
     </div>

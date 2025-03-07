@@ -48,7 +48,7 @@ function Navbar() {
      );
   return (
     <>
-    <div className={`max-w-screen-2xl mx-auto container dark:bg-slate-900 dark:text-white md:px-20 px-2 fixed left-0 right-0 top-0 z-50 items-center
+    <div className={`max-w-screen-2xl mx-auto container dark:bg-black dark:text-white md:px-20 px-2 fixed left-0 right-0 top-0 z-50 items-center
         ${
             sticky
             ?" sticky-navbar shadow-md bg-slate-100 duration-500 transition-all ease-in-out"
@@ -91,7 +91,7 @@ function Navbar() {
                 </div>
                 <div className='hidden md:block'>
                     <label className=" px-4 py-3 rounded-md flex items-center gap-2">
-                        <input type="text" className="grow p-1 dark:bg-slate-900 dark:text-white " placeholder="Search" />
+                        <input type="text" className="grow p-1 dark:bg-black dark:text-white " placeholder="Search" />
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 16 16"

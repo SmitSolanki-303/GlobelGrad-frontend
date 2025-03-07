@@ -46,29 +46,30 @@ const JobMatcher = () => {
   };
 
   return (
-    <div className="max-w-screen-2xl pt-40 mx-auto p-6 bg-gradient-to-b from-pink-50 to-white min-h-screen">
-      <div className="space-y-8">
-        <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-          <div className="bg-gradient-to-r from-pink-500 to-pink-600 text-white p-6">
+    <>
+    <div className=" max-w-screen-2xl pt-40 mx-auto p-6  min-h-screen ">
+      <div className="dark:bg-black dark:text-white space-y-8 ">
+        <div className="bg-white rounded-lg shadow-lg overflow-hidden ">
+          <div className="bg-gradient-to-r from-pink-500 to-pink-600 text-white p-6 ">
             <h2 className="text-2xl font-bold flex items-center gap-2">
               <Briefcase className="h-6 w-6" />
               Job Description Matcher
             </h2>
             <p className="text-pink-100">Find out how well your skills match the job requirements</p>
           </div>
-          <div className="p-6">
+          <div className="p-6 dark:bg-black dark:text-white">
             <div className="space-y-6">
-              <div className="bg-pink-50 p-4 rounded-lg border border-pink-200">
-                <label className="block text-lg font-medium mb-2 text-pink-700">
+              <div className="dark:bg-black  bg-pink-50 p-4 rounded-lg border border-pink-200 ">
+                <label className="block text-lg font-medium mb-2 text-pink-500 ">
                   Your Skills
                 </label>
-                <div className="flex gap-2 mb-2">
+                <div className="flex gap-2 mb-2 ">
                   <input
                     type="text"
                     value={newSkill}
                     onChange={(e) => setNewSkill(e.target.value)}
                     placeholder="Add a skill (e.g., React, Python)"
-                    className="flex-1 px-4 py-2 border border-pink-200 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500"
+                    className="dark:bg-black dark:text-white flex-1 px-4 py-2 border border-pink-200 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500"
                     onKeyPress={(e) => e.key === 'Enter' && addSkill()}
                   />
                   <button 
@@ -82,7 +83,7 @@ const JobMatcher = () => {
                   {userSkills.map((skill, index) => (
                     <span
                       key={index}
-                      className="bg-white text-pink-700 px-3 py-1 rounded-full text-sm flex items-center gap-1 border border-pink-200 shadow-sm"
+                      className="bg-white dark:bg-black  text-pink-500 px-3 py-1 rounded-full text-sm flex items-center gap-1 border border-pink-200 shadow-sm"
                     >
                       {skill}
                       <XCircle
@@ -95,14 +96,14 @@ const JobMatcher = () => {
               </div>
 
               <div>
-                <label className="block text-lg font-medium mb-2 text-pink-700">
+                <label className="block text-lg font-medium mb-2 text-pink-700 dark:text-pink-500">
                   Job Description
                 </label>
                 <textarea
                   value={jobDescription}
                   onChange={(e) => setJobDescription(e.target.value)}
                   placeholder="Paste the job description here..."
-                  className="w-full h-48 px-4 py-2 border border-pink-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"
+                  className=" dark:bg-black dark:text-white w-full h-48 px-4 py-2 border border-pink-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"
                 />
               </div>
 
@@ -119,7 +120,7 @@ const JobMatcher = () => {
         </div>
 
         {matchResults && (
-          <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+          <div className="dark:bg-black dark:text-white bg-white rounded-lg shadow-lg overflow-hidden">
             <div className="bg-gradient-to-r from-pink-500 to-pink-600 text-white p-6">
               <h3 className="text-xl font-bold flex items-center gap-2">
                 <Sparkles className="h-5 w-5" />
@@ -131,7 +132,7 @@ const JobMatcher = () => {
                 <div className="text-4xl font-bold text-pink-600">
                   {matchResults.matchPercentage}%
                 </div>
-                <div className="text-gray-600">Match Score</div>
+                <div className="text-gray-600 dark:text-white">Match Score</div>
               </div>
 
               <div className="space-y-4">
@@ -180,6 +181,7 @@ const JobMatcher = () => {
         )}
       </div>
     </div>
+    </>
   );
 };
 
