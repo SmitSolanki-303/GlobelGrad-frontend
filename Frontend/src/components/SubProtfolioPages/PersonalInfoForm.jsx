@@ -26,7 +26,7 @@ const PersonalInfoForm = ({ formData, setFormData }) => {
 
   return (
     <div>
-      <h2 className="text-2xl font-bold text-gray-800 mb-6">Personal Profile</h2>
+      <h2 className="text-3xl font-bold text-black mb-6">Personal Profile</h2>
       <p className="text-gray-600 mb-8">Start with some basic information about yourself</p>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
