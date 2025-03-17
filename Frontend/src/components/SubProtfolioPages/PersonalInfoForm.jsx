@@ -1,138 +1,145 @@
-import React, { useState, useEffect } from 'react';
+//PersonalInfoForm.jsx;
 
-const PersonalInfoForm = ({ formData, setFormData }) => {
-  // Initial load effect to check for saved data
-  useEffect(() => {
-    const savedData = localStorage.getItem('portfolioUserData');
-    if (savedData) {
-      const userData = JSON.parse(savedData);
-      // Check if the formData is empty before auto-filling
-      if (!formData.name && !formData.email) {
-        setFormData(prevData => ({
-          ...prevData,
-          ...userData
-        }));
-      }
-    }
-  }, []);
+import React, { useState, useEffect } from 'react';
+import { db } from '../../firebase/config';
+import { doc, setDoc } from 'firebase/firestore';
+
+const PersonalInfoForm = ({ formData, setFormData, userId }) => {
+  const [resumeFile, setResumeFile] = useState(null);
+  const [resumeUrl, setResumeUrl] = useState(formData.resumeUrl || '');
+  const [error, setError] = useState(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
-      [name]: value
+      [name]: value,
     });
+  };
+
+  const handleResumeUpload = (e) => {
+    const file = e.target.files[0];
+    if (file && file.type === 'application/pdf') {
+      setResumeFile(file);
+      const url = URL.createObjectURL(file);
+      setResumeUrl(url);
+      setFormData({ ...formData, resumeUrl: url });
+      setError(null);
+    } else {
+      setError('Please upload a valid PDF file.');
+    }
+  };
+
+  const handleSubmit = async () => {
+    try {
+      // Log the userId and data for debugging
+      console.log('Saving personal info for userId:', userId);
+      console.log('Form data:', formData);  
+
+      if (!userId) {
+        throw new Error('User ID is missing. Please register or log in first.');
+      }
+
+      // Validate that userId is a non-empty string
+      if (typeof userId !== 'string' || userId.trim() === '') {
+        throw new Error('Invalid userId format. It must be a non-empty string.');
+      }
+
+      // Clean up formData to remove undefined/null values
+      const personalInfoData = {
+        nationality: formData.nationality || '',
+        languagesSpoken: formData.languagesSpoken || '',
+        hobbies: formData.hobbies || '',
+        resumeUrl: formData.resumeUrl || '', // Temporary URL; consider Firebase Storage later
+        userId,
+        updatedAt: new Date().toISOString(),
+      };
+
+      // Log the data being sent to Firestore
+      console.log('Data to save:', personalInfoData);
+
+      // Save to Firestore
+      await setDoc(doc(db, 'personalInfo', userId), personalInfoData, { merge: true });
+      console.log('Personal info saved successfully for userId:', userId);
+      alert('Personal info saved successfully!');
+    } catch (err) {
+      console.error('Error saving personal info:', err.message, err.code);
+      setError(`Failed to save personal info: ${err.message}`);
+    }
   };
 
   return (
     <div>
-      <h2 className="text-3xl font-bold text-black mb-6">Personal Profile</h2>
-      <p className="text-gray-600 mb-8">Start with some basic information about yourself</p>
-      
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
-          <input
-            type="text"
-            name="name"
-            value={formData.name || ''}
-            onChange={handleChange}
-            className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-            placeholder="John Doe"
-          />
-        </div>
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Professional Title</label>
-          <input
-            type="text"
-            name="title"
-            value={formData.title || ''}
-            onChange={handleChange}
-            className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-            placeholder="Full Stack Developer"
-          />
-        </div>
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
-          <input
-            type="email"
-            name="email"
-            value={formData.email || ''}
-            onChange={handleChange}
-            className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-            placeholder="john.doe@example.com"
-          />
-        </div>
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Phone</label>
-          <input
-            type="tel"
-            name="phone"
-            value={formData.phone || ''}
-            onChange={handleChange}
-            className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-            placeholder="+1 (555) 123-4567"
-          />
-        </div>
-        <div className="md:col-span-2">
-          <label className="block text-sm font-medium text-gray-700 mb-1">Location</label>
-          <input
-            type="text"
-            name="location"
-            value={formData.location || ''}
-            onChange={handleChange}
-            className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-            placeholder="New York, NY"
-          />
-        </div>
-        <div className="md:col-span-2">
-          <label className="block text-sm font-medium text-gray-700 mb-1">About Me</label>
-          <textarea
-            name="about"
-            value={formData.about || ''}
-            onChange={handleChange}
-            rows="4"
-            className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-            placeholder="Write a short bio about yourself..."
-          ></textarea>
-        </div>
-      </div>
+      <h2 className="text-3xl font-bold text-black mb-6">Additional Personal Details</h2>
+      <p className="text-gray-600 mb-8">Provide more details to enhance your portfolio</p>
 
-      <h3 className="text-xl font-semibold mt-10 mb-4">Social & Professional Links</h3>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">LinkedIn</label>
-          <input
-            type="url"
-            name="linkedin"
-            value={formData.linkedin || ''}
-            onChange={handleChange}
-            className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-            placeholder="https://linkedin.com/in/johndoe"
-          />
+      {error && (
+        <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg mb-6">
+          {error}
         </div>
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">GitHub</label>
-          <input
-            type="url"
-            name="github"
-            value={formData.github || ''}
-            onChange={handleChange}
-            className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-            placeholder="https://github.com/johndoe"
-          />
+      )}
+
+      <div className="space-y-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Nationality</label>
+            <input
+              type="text"
+              name="nationality"
+              value={formData.nationality || ''}
+              onChange={handleChange}
+              className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              placeholder="e.g., American"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Languages Spoken</label>
+            <input
+              type="text"
+              name="languagesSpoken"
+              value={formData.languagesSpoken || ''}
+              onChange={handleChange}
+              className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              placeholder="e.g., English, Spanish"
+            />
+          </div>
+          <div className="md:col-span-2">
+            <label className="block text-sm font-medium text-gray-700 mb-1">Hobbies</label>
+            <textarea
+              name="hobbies"
+              value={formData.hobbies || ''}
+              onChange={handleChange}
+              rows="3"
+              className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              placeholder="e.g., Reading, Hiking, Coding"
+            ></textarea>
+          </div>
+          <div className="md:col-span-2">
+            <label className="block text-sm font-medium text-gray-700 mb-1">Upload Resume (PDF)</label>
+            <input
+              type="file"
+              accept="application/pdf"
+              onChange={handleResumeUpload}
+              className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            />
+            {resumeUrl && (
+              <a
+                href={resumeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-500 hover:underline mt-2 block"
+              >
+                View Uploaded Resume
+              </a>
+            )}
+          </div>
         </div>
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Personal Website</label>
-          <input
-            type="url"
-            name="website"
-            value={formData.website || ''}
-            onChange={handleChange}
-            className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-            placeholder="https://johndoe.com"
-          />
-        </div>
+        <button
+          onClick={handleSubmit}
+          className="mt-6 px-6 py-3 text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors"
+        >
+          Save Personal Info
+        </button>
       </div>
     </div>
   );
